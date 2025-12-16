@@ -1,3 +1,4 @@
+/* NuevoReporte.jsx*/
 import { useState } from "react";
 import "./NuevoReporte.css";
 
@@ -28,9 +29,9 @@ const crearReporte = async () => {
     subject: asunto,
     description: descripcion,
     // Puedes mapear prioridad a números según Redmine si quieres
-    priority_id: prioridad === "alta" ? 4 : prioridad === "media" ? 2 : 1,
+    priority_id: prioridad === "inmediata" ? 5 : prioridad === "urgente" ? 4 : prioridad === "alta" ? 3 :prioridad === "normal" ? 2 :  1,
     // tracker_id fijo, ya que tu backend usa 1
-    tracker_id: 1
+    tracker_id: estado === "errores" ? 1 : estado === "tareas" ? 2 :3,
   };
 
   try {
@@ -68,9 +69,7 @@ const crearReporte = async () => {
         <div className="nr-header">
           <div>
             <h2>Nuevo reporte</h2>
-            <p>
-              Escribe el problema para enviarlo a Redmine.
-            </p>
+            
           </div>
         </div>
 
@@ -83,7 +82,7 @@ const crearReporte = async () => {
             onChange={(e) => setAsunto(e.target.value)}
             placeholder="Escribe aquí el asunto del reporte"
           />
-          <small>Mínimo 4 caracteres.</small>
+          <small>Debe contener mínimo 3 caracteres.</small>
         </div>
 
        
@@ -94,21 +93,23 @@ const crearReporte = async () => {
               value={prioridad}
               onChange={(e) => setPrioridad(e.target.value)}
             >
+              <option value="inmediata">Inmediata</option>
+              <option value="urgente">Urgente</option>
               <option value="alta">Alta</option>
-              <option value="media">Media</option>
+              <option value="normal">Normal</option>
               <option value="baja">Baja</option>
             </select>
           </div>
 
           <div className="nr-field">
-            <label>Estado</label>
+            <label>Tipo</label>
             <select
               value={estado}
               onChange={(e) => setEstado(e.target.value)}
             >
-              <option value="abierto">Abierto</option>
-              <option value="en_progreso">En progreso</option>
-              <option value="cerrado">Cerrado</option>
+              <option value="errores">Errores</option>
+              <option value="tareas">Tareas</option>
+              <option value="soporte">Soporte</option>
             </select>
           </div>
         </div>
@@ -122,7 +123,7 @@ const crearReporte = async () => {
             onChange={(e) => setDescripcion(e.target.value)}
             placeholder="Describe el problema y prueba desde la app"
           />
-          <small>Mínimo 10 caracteres.</small>
+          <small>Debe Contener mínimo 10 caracteres.</small>
         </div>
 
         {/* Acciones */}

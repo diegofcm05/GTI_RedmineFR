@@ -11,17 +11,16 @@
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: left; /* Cambiado de center a left */
+  text-align: left;
 }
 
 .tickets-title {
-  font-size: 24px; /* Más pequeño (era 32px) */
-  font-weight: 600; /* Un poco menos grueso (era 700) */
-  margin: 0 0 8px 0; /* Menos margen inferior */
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
   color: #fff;
   letter-spacing: 0.3px;
 }
-
 
 .header-divider {
   height: 2px;
@@ -30,10 +29,48 @@
     transparent 0%, 
     #3b82f6 50%, 
     transparent 100%);
-  margin-top: 20px; /* Menos margen superior */
+  margin-top: 20px;
   opacity: 0.6;
 }
 
+/* Contenedor principal del contenido */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 40px 40px 40px;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+}
+
+/* Títulos centrados sin márgenes grandes */
+.content-title {
+  font-size: 32px; /* Un poco más pequeño que 40px */
+  font-weight: 600;
+  margin: 10px 0 8px 0; /* Margen muy reducido */
+  color: #fff;
+  text-align: center;
+}
+
+.content-subtitle {
+  font-size: 18px; /* Un poco más pequeño que 25px */
+  font-weight: 400;
+  margin: 0 0 20px 0; /* Margen reducido */
+  color: #94a3b8;
+  text-align: center;
+}
+
+/* Separador entre títulos y formulario */
+.separator {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #3b82f6 30%, 
+    transparent 100%);
+  margin: 20px 0 30px 0; /* Espacio controlado */
+  opacity: 0.4;
+}
 
 /* Asegurar que el body ocupe todo el ancho */
 body, #root {
@@ -41,4 +78,15 @@ body, #root {
   padding: 0;
   width: 100%;
   min-height: 100vh;
+  background: radial-gradient(circle at top, #1e293b, #020617);
+}
+
+/* Ajustes para NuevoReporte.css (reemplaza lo que tienes ahora) */
+.nr-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 0 0; /* Reducido el padding superior */
+  box-sizing: border-box;
+  width: 100%;
 }
