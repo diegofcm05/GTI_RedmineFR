@@ -1,0 +1,57 @@
+/* Tickets.css */
+
+/* Header Styles */
+.tickets-header {
+  background: radial-gradient(circle at top, #1e293b, #020617);
+  width: 100%;
+  padding: 25px 20px 15px 20px;
+  box-sizing: border-box;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left; /* Cambiado de center a left */
+}
+
+.tickets-title {
+  font-size: 24px; /* Más pequeño (era 32px) */
+  font-weight: 600; /* Un poco menos grueso (era 700) */
+  margin: 0 0 8px 0; /* Menos margen inferior */
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+
+.header-divider {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #3b82f6 50%, 
+    transparent 100%);
+  margin-top: 20px; /* Menos margen superior */
+  opacity: 0.6;
+}
+
+/* Contenedor principal centrado */
+.nr-container {
+
+  min-height: calc(100vh - 140px); /* Ajustado por el header más pequeño */
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px 40px 40px;
+  padding-top: 15px; /* Menos padding arriba */
+  box-sizing: border-box;
+  color: #fff;
+}
+
+/* Asegurar que el body ocupe todo el ancho */
+body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
