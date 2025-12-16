@@ -30,7 +30,7 @@ const crearReporte = async () => {
     description: descripcion,
     // Puedes mapear prioridad a números según Redmine si quieres
     priority_id: prioridad === "inmediata" ? 5 : prioridad === "urgente" ? 4 : prioridad === "alta" ? 3 :prioridad === "normal" ? 2 :  1,
-    // tracker_id fijo, ya que tu backend usa 1
+    // tracker_id
     tracker_id: estado === "errores" ? 1 : estado === "tareas" ? 2 :3,
   };
 
@@ -68,7 +68,7 @@ const crearReporte = async () => {
       <div className="nr-card">
         <div className="nr-header">
           <div>
-            <h2>Nuevo reporte</h2>
+            <h2>Crear reporte</h2>
             
           </div>
         </div>
@@ -82,7 +82,7 @@ const crearReporte = async () => {
             onChange={(e) => setAsunto(e.target.value)}
             placeholder="Escribe aquí el asunto del reporte"
           />
-          <small>Debe contener mínimo 3 caracteres.</small>
+          <small>Debe contener un mínimo de 3 caracteres.</small>
         </div>
 
        
@@ -122,8 +122,9 @@ const crearReporte = async () => {
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
             placeholder="Describe el problema y prueba desde la app"
+            style={{ fontFamily: "Poppins" }}
           />
-          <small>Debe Contener mínimo 10 caracteres.</small>
+          <small>Debe contener un mínimo de 10 caracteres.</small>
         </div>
 
         {/* Acciones */}

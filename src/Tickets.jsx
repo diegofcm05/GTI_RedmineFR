@@ -18,7 +18,7 @@ export default function SistemaTickets() {
       {/* Contenido centrado en un solo contenedor */}
       <div className="main-content">
         <h1 className="content-title">Programa de Tickets en Redmine</h1>
-        <p className="content-subtitle">Ingrese el problema encontrado para que sea enviado a Redmine</p>
+        <p className="content-subtitle">Ingrese el problema encontrado para que sea enviado a Redmine.</p>
         <div className="separator"></div>
         <NuevoReporte/>
       </div>
