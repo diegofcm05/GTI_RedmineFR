@@ -16,13 +16,51 @@ export default function NuevoReporte() {
     setDescripcion("");
   };
 
-  // Crear reporte
-  const crearReporte = () => {
+const crearReporte = async () => {
+  // Validaciones básicas
+  if (asunto.length < 4 || descripcion.length < 10) {
+    alert("Por favor completa los campos correctamente.");
+    return;
+  }
 
-    // Aquí luego puedes usar fetch para enviarlo al backend
-
-    limpiarFormulario();
+  // Construimos el payload
+  const payload = {
+    subject: asunto,
+    description: descripcion,
+    // Puedes mapear prioridad a números según Redmine si quieres
+    priority_id: prioridad === "alta" ? 4 : prioridad === "media" ? 2 : 1,
+    // tracker_id fijo, ya que tu backend usa 1
+    tracker_id: 1
   };
+
+  try {
+    const res = await fetch("http://localhost:4000/tickets", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      console.error("Error al crear ticket:", err);
+      alert("Ocurrió un error al crear el ticket.");
+      return;
+    }
+
+    const data = await res.json();
+    console.log("Ticket creado:", data);
+    alert("Ticket creado correctamente en Redmine!");
+
+    // Limpiar formulario
+    limpiarFormulario();
+    } catch (error) {
+      console.error("Error al conectar con backend:", error);
+      alert("No se pudo conectar con el backend.");
+    }
+  };
+
 
   return (
     <div className="nr-container">

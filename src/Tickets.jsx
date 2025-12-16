@@ -10,7 +10,7 @@ export default function SistemaTickets() {
       {/* Header con título a la izquierda */}
       <header className="tickets-header">
         <div className="header-content">
-          <h1 className="tickets-title">Sistema de Tickets</h1>
+          <h1 className="tickets-title">Sistema de Tickets - GTI</h1>
           <div className="header-divider"></div>
         </div>
       </header>
