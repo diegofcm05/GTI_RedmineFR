@@ -34,19 +34,6 @@
   opacity: 0.6;
 }
 
-/* Contenedor principal centrado */
-.nr-container {
-
-  min-height: calc(100vh - 140px); /* Ajustado por el header más pequeño */
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 30px 40px 40px 40px;
-  padding-top: 15px; /* Menos padding arriba */
-  box-sizing: border-box;
-  color: #fff;
-}
 
 /* Asegurar que el body ocupe todo el ancho */
 body, #root {

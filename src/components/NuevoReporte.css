@@ -1,24 +1,25 @@
 /* Fondo */
 .nr-container {
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #1e293b, #020617);
+  min-height: calc(100vh - 80px); /* espacio para el header */
   display: flex;
-  align-items: flex-start;
+  justify-content: center; /* centra horizontal */
+  align-items: center;     /* centra vertical */
   padding: 40px;
   box-sizing: border-box;
 }
 
-/* Card */
+
+
 .nr-card {
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(12px);
+  background: #020617; 
   border-radius: 16px;
   padding: 24px;
   width: 100%;
   max-width: 680px;
   color: #e5e7eb;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
+
 
 /* Header */
 .nr-header {

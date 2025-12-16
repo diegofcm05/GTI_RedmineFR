@@ -1,35 +1,61 @@
+import { useState } from "react";
 import "./NuevoReporte.css";
 
 export default function NuevoReporte() {
+  // Estado del formulario
+  const [asunto, setAsunto] = useState("");
+  const [prioridad, setPrioridad] = useState("media");
+  const [estado, setEstado] = useState("abierto");
+  const [descripcion, setDescripcion] = useState("");
+
+  // Limpiar formulario
+  const limpiarFormulario = () => {
+    setAsunto("");
+    setPrioridad("media");
+    setEstado("abierto");
+    setDescripcion("");
+  };
+
+  // Crear reporte
+  const crearReporte = () => {
+
+    // Aquí luego puedes usar fetch para enviarlo al backend
+
+    limpiarFormulario();
+  };
+
   return (
     <div className="nr-container">
       <div className="nr-card">
-        {/* Header */}
         <div className="nr-header">
           <div>
             <h2>Nuevo reporte</h2>
             <p>
-              Escribe el problema con detalle. Luego lo enviaremos a Redmine.
+              Escribe el problema para enviarlo a Redmine.
             </p>
           </div>
-          <button className="nr-btn nr-btn-secondary">Completa el formulario</button>
         </div>
 
-        {/* Asunto */}
+        
         <div className="nr-field">
           <label>Asunto</label>
           <input
             type="text"
+            value={asunto}
+            onChange={(e) => setAsunto(e.target.value)}
             placeholder="Escribe aquí el asunto del reporte"
           />
           <small>Mínimo 4 caracteres.</small>
         </div>
 
-        {/* Prioridad y Estado */}
+       
         <div className="nr-grid">
           <div className="nr-field">
             <label>Prioridad</label>
-            <select defaultValue="media">
+            <select
+              value={prioridad}
+              onChange={(e) => setPrioridad(e.target.value)}
+            >
               <option value="alta">Alta</option>
               <option value="media">Media</option>
               <option value="baja">Baja</option>
@@ -38,7 +64,10 @@ export default function NuevoReporte() {
 
           <div className="nr-field">
             <label>Estado</label>
-            <select defaultValue="abierto">
+            <select
+              value={estado}
+              onChange={(e) => setEstado(e.target.value)}
+            >
               <option value="abierto">Abierto</option>
               <option value="en_progreso">En progreso</option>
               <option value="cerrado">Cerrado</option>
@@ -51,15 +80,28 @@ export default function NuevoReporte() {
           <label>Descripción</label>
           <textarea
             rows="5"
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
             placeholder="Describe el problema y prueba desde la app"
           />
-          <small>Mínimo 10 caracteres. Entre más claro, mejor.</small>
+          <small>Mínimo 10 caracteres.</small>
         </div>
 
-        {/* Actions */}
+        {/* Acciones */}
         <div className="nr-actions">
-          <button className="nr-btn nr-btn-outline">Limpiar</button>
-          <button className="nr-btn nr-btn-primary">Crear</button>
+          <button
+            className="nr-btn nr-btn-outline"
+            onClick={limpiarFormulario}
+          >
+            Limpiar
+          </button>
+
+          <button
+            className="nr-btn nr-btn-primary"
+            onClick={crearReporte}
+          >
+            Crear
+          </button>
         </div>
       </div>
     </div>
