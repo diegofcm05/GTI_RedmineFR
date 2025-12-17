@@ -5,17 +5,18 @@ import "./NuevoReporte.css";
 export default function NuevoReporte() {
   // Estado del formulario
   const [asunto, setAsunto] = useState("");
-  const [prioridad, setPrioridad] = useState("media");
-  const [estado, setEstado] = useState("abierto");
+  const [priority, setPriority] = useState("2"); // Normal
+  const [tracker, setTracker] = useState("3");   // Soporte
   const [descripcion, setDescripcion] = useState("");
 
   // Limpiar formulario
   const limpiarFormulario = () => {
-    setAsunto("");
-    setPrioridad("media");
-    setEstado("abierto");
-    setDescripcion("");
+  setAsunto("");
+  setPriority("2");
+  setTracker("3");
+  setDescripcion("");
   };
+
 
 const crearReporte = async () => {
   // Validaciones básicas
@@ -28,10 +29,8 @@ const crearReporte = async () => {
   const payload = {
     subject: asunto,
     description: descripcion,
-    // Puedes mapear prioridad a números según Redmine si quieres
-    priority_id: prioridad === "inmediata" ? 5 : prioridad === "urgente" ? 4 : prioridad === "alta" ? 3 :prioridad === "normal" ? 2 :  1,
-    // tracker_id
-    tracker_id: estado === "errores" ? 1 : estado === "tareas" ? 2 :3,
+    tracker_id: Number(tracker),
+    priority_id: Number(priority),
   };
 
   try {
@@ -89,27 +88,21 @@ const crearReporte = async () => {
         <div className="nr-grid">
           <div className="nr-field">
             <label>Prioridad</label>
-            <select
-              value={prioridad}
-              onChange={(e) => setPrioridad(e.target.value)}
-            >
-              <option value="inmediata">Inmediata</option>
-              <option value="urgente">Urgente</option>
-              <option value="alta">Alta</option>
-              <option value="normal">Normal</option>
-              <option value="baja">Baja</option>
+            <select value={priority} onChange={e => setPriority(e.target.value)}>
+              <option value="5">Inmediata</option>
+              <option value="4">Urgente</option>
+              <option value="3">Alta</option>
+              <option value="2">Normal</option>
+              <option value="1">Baja</option>
             </select>
           </div>
 
           <div className="nr-field">
             <label>Tipo</label>
-            <select
-              value={estado}
-              onChange={(e) => setEstado(e.target.value)}
-            >
-              <option value="errores">Errores</option>
-              <option value="tareas">Tareas</option>
-              <option value="soporte">Soporte</option>
+            <select value={tracker} onChange={e => setTracker(e.target.value)}>
+              <option value="1">Errores</option>
+              <option value="2">Tareas</option>
+              <option value="3">Soporte</option>
             </select>
           </div>
         </div>
@@ -133,7 +126,7 @@ const crearReporte = async () => {
             className="nr-btn nr-btn-outline"
             onClick={limpiarFormulario}
           >
-            Limpiar
+            Limpiar Form
           </button>
 
           <button
